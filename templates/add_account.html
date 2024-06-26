@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}家計簿アプリ - アカウント追加{% endblock %}
+
+{% block content %}
+    <h1>アカウントを追加</h1>
+    <form method="POST">
+        <label for="name">アカウント名:</label>
+        <input type="text" name="name" required><br>
+
+        <label for="balance">初期残高:</label>
+        <input type="number" name="balance" step="0.01" required><br>
+
+        <input type="submit" value="追加">
+    </form>
+    <a href="{{ url_for('index') }}">戻る</a>
+{% endblock %}

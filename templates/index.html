@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}家計簿アプリ - ホーム{% endblock %}
+
+{% block content %}
+    <h1>家計簿アプリ</h1>
+    
+    <h2>アカウント残高</h2>
+    <ul>
+    {% for account in accounts %}
+        <li>{{ account.name }}: {{ account.balance }}円</li>
+    {% endfor %}
+    </ul>
+
+    <h2>今月の概要</h2>
+    <p>総収入: {{ total_income }}円</p>
+    <p>総支出: {{ total_expense }}円</p>
+    <p>収支: {{ net }}円</p>
+
+    <h3>カテゴリ別支出</h3>
+    <ul>
+    {% for category, amount in category_breakdown.items() %}
+        <li>{{ category }}: {{ amount }}円</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('add_account') }}">アカウントを追加</a>
+    <a href="{{ url_for('remove_account') }}">アカウントを削除</a>
+    <a href="{{ url_for('add_transaction') }}">取引を追加</a>
+    <a href="{{ url_for('add_subscription') }}">サブスクリプションを追加</a>
+{% endblock %}
